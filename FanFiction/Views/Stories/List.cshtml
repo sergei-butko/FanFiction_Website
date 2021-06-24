@@ -1,0 +1,10 @@
+﻿<h2>All Stories</h2>
+@{
+    foreach (var story in Model.AllStories)
+    {
+        <div>
+            <h2>Model: @story.Title</h2>
+            <p>Fandom: @story.Fandom</p>
+        </div>
+    }
+}
