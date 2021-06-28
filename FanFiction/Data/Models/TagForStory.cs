@@ -1,12 +1,11 @@
 ﻿namespace FanFiction.Data.Models
 {
-    public class Comment
+    public class TagForStory
     {
         public int Id { get; set; }
         public int? StoryId { get; set; }
         public Story Story { get; set; }
-        public int? UserId { get; set; }
-        public User User { get; set; }
-        public string Text { get; set; }
+        public int? TagId { get; set; }
+        public Tag Tag { get; set; }
     }
 }

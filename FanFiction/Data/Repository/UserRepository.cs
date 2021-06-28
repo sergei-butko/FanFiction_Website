@@ -5,16 +5,16 @@ using FanFiction.Data.Models;
 
 namespace FanFiction.Data.Repository
 {
-    public class StoryRepository : IAllStories
+    public class UserRepository:IAllUsers
     {
         private readonly AppDbContext _appDbContext;
 
-        public StoryRepository(AppDbContext appDbContext)
+        public UserRepository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
 
-        public IEnumerable<Story> Stories => _appDbContext.Story;
-        public Story GetObjectStory(int id) => _appDbContext.Story.FirstOrDefault(p => p.Id == id);
+        public IEnumerable<User> Users => _appDbContext.User;
+        public User GetObjectUser(int id) => _appDbContext.User.FirstOrDefault(p => p.Id == id);
     }
 }

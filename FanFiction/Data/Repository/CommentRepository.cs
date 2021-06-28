@@ -4,15 +4,15 @@ using FanFiction.Data.Models;
 
 namespace FanFiction.Data.Repository
 {
-    public class ChapterRepository : IAllChapters
+    public class CommentRepository : IAllComments
     {
         private readonly AppDbContext _appDbContext;
 
-        public ChapterRepository(AppDbContext appDbContext)
+        public CommentRepository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
 
-        public IEnumerable<Chapter> Chapters => _appDbContext.Chapter;
+        public IEnumerable<Comment> Comments => _appDbContext.Comment;
     }
 }

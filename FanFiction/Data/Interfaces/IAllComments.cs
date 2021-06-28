@@ -3,8 +3,8 @@ using FanFiction.Data.Models;
 
 namespace FanFiction.Data.Interfaces
 {
-    public interface IAllChapters
+    public interface IAllComments
     {
-        IEnumerable<Chapter> Chapters { get; }
+        IEnumerable<Comment> Comments { get; }
     }
 }
