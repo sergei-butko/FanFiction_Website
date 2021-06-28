@@ -13,7 +13,7 @@ namespace FanFiction.Data.Mocks
                 {
                     Name = "Ivan Petrov",
                     Email = "i.petrov@example.com"
-                },
+                }
             };
 
         public User GetObjectUser(int id)

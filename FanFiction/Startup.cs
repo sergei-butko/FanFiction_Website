@@ -1,13 +1,11 @@
 using FanFiction.Data;
 using FanFiction.Data.Interfaces;
-using FanFiction.Data.Mocks;
+using FanFiction.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Data.Entity;
-using Microsoft.EntityFrameworkCore;
 
 namespace FanFiction
 {
@@ -32,7 +30,12 @@ namespace FanFiction
                 mvcOptions.EnableEndpointRouting = false;
             });
             services.AddRazorPages();
-            services.AddTransient<IAllStories, MockStories>();
+            services.AddTransient<IAllUsers, UserRepository>();
+            services.AddTransient<IAllStories, StoryRepository>();
+            services.AddTransient<IAllChapters, ChapterRepository>();
+            services.AddTransient<IAllTags, TagRepository>();
+            services.AddTransient<IAllTagsForStories, TagForStoryRepository>();
+            services.AddTransient<IAllComments, CommentRepository>();
             services.AddMvc();
         }
 
@@ -43,6 +46,12 @@ namespace FanFiction
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
+            
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                AppDbContext context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                DbObjects.Initial(context);
+            }
         }
     }
 }
