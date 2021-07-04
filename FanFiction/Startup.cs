@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace FanFiction
 {
@@ -25,6 +26,7 @@ namespace FanFiction
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(_confstring.GetConnectionString("DefaultConnection")));
+
             services.AddControllersWithViews(mvcOptions=>
             {
                 mvcOptions.EnableEndpointRouting = false;
@@ -42,10 +44,24 @@ namespace FanFiction
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
             app.UseStatusCodePages();
+            
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
+            
             app.UseMvcWithDefaultRoute();
+            
+            app.UseAuthentication();
+            app.UseAuthorization();
             
             using (var scope = app.ApplicationServices.CreateScope())
             {
