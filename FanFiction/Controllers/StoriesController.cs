@@ -13,7 +13,7 @@ namespace FanFiction.Controllers
             _allStories = iAllStories;
         }
 
-        public ViewResult List()
+        public ViewResult Story()
         {
             ViewBag.Title = "Fanfic Page";
             StoriesListViewModel obj = new StoriesListViewModel {AllStories = _allStories.Stories};

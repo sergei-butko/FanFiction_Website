@@ -3,6 +3,7 @@ using FanFiction.Data.Interfaces;
 using FanFiction.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,7 +27,8 @@ namespace FanFiction
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(_confstring.GetConnectionString("DefaultConnection")));
-
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<AppDbContext>();
             services.AddControllersWithViews(mvcOptions=>
             {
                 mvcOptions.EnableEndpointRouting = false;
@@ -50,7 +52,7 @@ namespace FanFiction
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
             app.UseStatusCodePages();
