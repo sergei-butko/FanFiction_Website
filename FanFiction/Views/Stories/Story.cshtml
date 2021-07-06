@@ -2,10 +2,17 @@
     foreach (var story in Model.AllStories)
     {
         <div>
-            <h2>Story: @story.Title</h2>
+            <h2>@story.Title</h2>
             <p>Fandom: @story.Fandom</p>
-            <p>Description: @story.ShortDescription</p>
+            <p>@story.ShortDescription</p>
             <p>Likes: @story.Likes. Rating: @story.Rating</p>
         </div>
+        <p>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+        foreach (var chapter in Model.AllChapters)
+        {
+            <h5>@chapter.Title</h5>
+            <p>@chapter.Text</p>
+            <p>Likes: @chapter.Likes</p>
+        }
     }
 }
