@@ -1,7 +1,8 @@
-﻿using FanFiction.ViewModels;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics;
+using FanFiction.ViewModels;
+
 namespace FanFiction.Controllers
 {
     public class HomeController : Controller

@@ -60,10 +60,10 @@ namespace FanFiction
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             
-            app.UseMvcWithDefaultRoute();
-            
             app.UseAuthentication();
             app.UseAuthorization();
+            
+            app.UseMvcWithDefaultRoute();
             
             using (var scope = app.ApplicationServices.CreateScope())
             {

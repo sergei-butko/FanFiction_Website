@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sql-server-fanfiction/databases/FanFiction_Website_DB",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:AppDbContextConnection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
