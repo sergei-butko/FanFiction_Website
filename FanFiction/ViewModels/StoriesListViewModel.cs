@@ -7,5 +7,6 @@ namespace FanFiction.ViewModels
     {
         public IEnumerable<Story> AllStories { get; init; }
         public IEnumerable<Chapter> AllChapters { get; init; }
+        public IEnumerable<Fandom> AllFandoms { get; init; }
     }
 }

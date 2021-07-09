@@ -14,6 +14,7 @@ namespace FanFiction.Data
 
         public DbSet<User> User { get; set; }
         public DbSet<Story> Story { get; set; }
+        public DbSet<Fandom> Fandom { get; set; }
         public DbSet<Chapter> Chapter { get; set; }
         public DbSet<Tag> Tag { get; set; }
         public DbSet<TagForStory> TagForStory { get; set; }

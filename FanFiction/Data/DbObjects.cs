@@ -1,4 +1,5 @@
-﻿using FanFiction.Data.Models;
+﻿using System;
+using FanFiction.Data.Models;
 using System.Linq;
 
 namespace FanFiction.Data
@@ -17,19 +18,26 @@ namespace FanFiction.Data
                     });
             }
             
+            if (!context.Fandom.Any())
+            {
+                context.AddRange(
+                    new Fandom {Name = "Harry Potter"});
+            }
+            
             if (!context.Story.Any())
             {
                 context.AddRange(
                     new Story
                     {
                         UserId = 1,
+                        LastUpdateDate = DateTime.Now,
                         Title = "A fugitive from the past",
                         ShortDescription =
                             "Severus Snape and Dylan Burke, who by the will of fate fell into the body " +
                             "of Sirius Black, are trying to find out what happened in 1981 in " +
                             "Godric's Hollow with the Potters and Voldemort, at the same time planning " +
                             "to slightly restore order in the wizarding world at their discretion.",
-                        Fandom = "Harry Potter",
+                        FandomId = 1,
                         Likes = 182,
                         Rating = (float) 4.1
                     });

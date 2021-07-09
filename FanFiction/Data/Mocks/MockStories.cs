@@ -17,7 +17,7 @@ namespace FanFiction.Data.Mocks
                                        "of Sirius Black, are trying to find out what happened in 1981 in " +
                                        "Godric's Hollow with the Potters and Voldemort, at the same time planning " +
                                        "to slightly restore order in the wizarding world at their discretion.",
-                    Fandom = "Harry Potter",
+                    FandomId = 1,
                     Likes = 182,
                     Rating = (float) 4.1
                 }

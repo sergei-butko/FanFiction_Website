@@ -36,6 +36,7 @@ namespace FanFiction
             services.AddRazorPages();
             services.AddTransient<IAllUsers, UserRepository>();
             services.AddTransient<IAllStories, StoryRepository>();
+            services.AddTransient<IAllFandoms, FandomRepository>();
             services.AddTransient<IAllChapters, ChapterRepository>();
             services.AddTransient<IAllTags, TagRepository>();
             services.AddTransient<IAllTagsForStories, TagForStoryRepository>();
