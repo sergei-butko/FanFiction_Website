@@ -1,24 +1,30 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-
+@inject SignInManager<IdentityUser> _signInManager
 @{
     ViewData["Title"] = "Home";
 }
 
-@if (SignInManager.IsSignedIn(User))
+@if (_signInManager.IsSignedIn(User))
 {
-    <div class="text-center">
-        <div class="col-6 col-sm-6 col-lg-4" style="text-align: start; border: 1px solid black">
-            <h2>Title</h2>
-            <p>ShortDescription</p>
-            <p>
-                <button type="button" class="btn btn-info" href="#">Add to Bookmarks</button>
-                <button type="button" class="btn btn-dark" href="#">Read now</button>
-            </p>
-        </div>
+    <div class="row">
+        @{
+            for (int i = 0; i < 3; i++)
+            {
+                <div class="col-md-4" style="text-align: start">
+                    <h2>Title</h2>
+                    <p>ShortDescription</p>
+                    <div class="btn-group-sm" role="group">
+                        <button type="button" class="btn btn-info" href="#">Add to Bookmarks</button>
+                        <button type="button" class="btn btn-dark" href="#">Read now</button>
+                    </div>
+                </div>
+            }
+        }
     </div>
+    <hr>
 }
 else
 {
-    <div>Login first!</div>
+    <h1>Welcome!</h1>
+    <h3>Login first!</h3>
 }
