@@ -11,12 +11,12 @@ namespace FanFiction.Data.Mocks
             {
                 new Story
                 {
-                    UserId = 1,
-                    Title = "A fugitive from the past",
-                    ShortDescription = "Severus Snape and Dylan Burke, who by the will of fate fell into the body " +
-                                       "of Sirius Black, are trying to find out what happened in 1981 in " +
-                                       "Godric's Hollow with the Potters and Voldemort, at the same time planning " +
-                                       "to slightly restore order in the wizarding world at their discretion.",
+                    UserId = "83aecb0a-65c0-4cd5-9179-a771444d5c70",
+                    Title = "Беглец из прошлого",
+                    ShortDescription = "Северус Снейп и Дилан Бэрк, волею судьбы попавший в тело Сириуса Блэка," +
+                                       " пытаются выяснить, что произошло в 1981 году в Годриковой Лощине" +
+                                       " с Поттерами и Волдемортом, заодно планируя слегка " +
+                                       "навести порядок в магическом мире по своему усмотрению.",
                     FandomId = 1,
                     Likes = 182,
                     Rating = (float) 4.1

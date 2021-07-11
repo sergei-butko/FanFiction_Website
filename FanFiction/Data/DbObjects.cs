@@ -8,16 +8,6 @@ namespace FanFiction.Data
     {
         public static void Initial(AppDbContext context)
         {
-            if (!context.User.Any())
-            {
-                context.AddRange(
-                    new User
-                    {
-                        Name = "Ivan Petrov",
-                        Email = "i.petrov@example.com"
-                    });
-            }
-            
             if (!context.Fandom.Any())
             {
                 context.AddRange(
@@ -29,7 +19,7 @@ namespace FanFiction.Data
                 context.AddRange(
                     new Story
                     {
-                        UserId = 1,
+                        UserId = "83aecb0a-65c0-4cd5-9179-a771444d5c70",
                         LastUpdateDate = DateTime.Now,
                         Title = "A fugitive from the past",
                         ShortDescription =
@@ -48,7 +38,7 @@ namespace FanFiction.Data
                 context.AddRange(
                     new Chapter
                     {
-                        StoryId = 1,
+                        StoryId = 2,
                         SequentialNumber = 1,
                         Title = "Chapter 1",
                         Text = "Сознание прояснялось толчками в такт стуку сердца. " +
@@ -60,7 +50,7 @@ namespace FanFiction.Data
                     },
                     new Chapter
                     {
-                        StoryId = 1,
+                        StoryId = 2,
                         SequentialNumber = 2,
                         Title = "Chapter 2",
                         Text = "Северус в своих апартаментах быстро заживил небольшую " +
@@ -71,7 +61,7 @@ namespace FanFiction.Data
                     },
                     new Chapter
                     {
-                        StoryId = 1,
+                        StoryId = 2,
                         SequentialNumber = 3,
                         Title = "Chapter 3",
                         Text = "В служивший тайным убежищем дом, затерянный среди практически " +
@@ -97,17 +87,17 @@ namespace FanFiction.Data
                 context.AddRange(
                     new TagForStory
                     {
-                        StoryId = 1,
+                        StoryId = 2,
                         TagId = 1
                     },
                     new TagForStory
                     {
-                        StoryId = 1,
+                        StoryId = 2,
                         TagId = 2
                     },
                     new TagForStory
                     {
-                        StoryId = 1,
+                        StoryId = 2,
                         TagId = 3
                     });
             }
@@ -117,8 +107,8 @@ namespace FanFiction.Data
                 context.AddRange(
                     new Comment
                     {
-                        StoryId = 1,
-                        UserId = 1,
+                        StoryId = 2,
+                        UserId = "83aecb0a-65c0-4cd5-9179-a771444d5c70",
                         Text = "Ух, экшн пошёл. Вы бы хоть предупредили в начале главы, " +
                                "а то как теперь следующей ждать? Все ногти сгрызу!"
                     });

@@ -15,6 +15,6 @@ namespace FanFiction.Data.Repository
         }
 
         public IEnumerable<User> Users => _appDbContext.User;
-        public User GetObjectUser(int id) => _appDbContext.User.FirstOrDefault(p => p.Id == id);
+        public User GetObjectUser(string id) => _appDbContext.User.FirstOrDefault(p => p.Id == id);
     }
 }

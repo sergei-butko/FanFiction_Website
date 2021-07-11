@@ -1,7 +1,11 @@
-﻿@{
+﻿@using System.Security.Claims
+
+@{
     <div style="text-align: end">
-        <button type="button" class="btn btn-success" 
-                onclick="location.href='@Url.Action("NewStory", "Stories")'">Create New</button>
+        <button type="button" class="btn btn-success"
+                onclick="location.href='@Url.Action("NewStory", "Stories")'">
+            Create New
+        </button>
         <p></p>
     </div>
     <div class="table-responsive">
@@ -11,7 +15,7 @@
                 <th>№</th>
                 <th>Title</th>
                 <th>Short Description</th>
-                <th>FandomId</th>
+                <th>Fandom</th>
                 <th>Likes</th>
                 <th>Rating</th>
                 <th></th>
@@ -23,22 +27,32 @@
                 foreach (var story in Model.AllStories)
                 {
                     i++;
-                    //var fandom = Select();
-                    <tr>
-                        <td>@i</td>
-                        <td>@story.Title</td>
-                        <td>@story.ShortDescription</td>
-                        <td>@story.FandomId</td>
-                        <td>@story.Likes</td>
-                        <td>@story.Rating</td>
-                        <td>
-                            <div class="btn-group-vertical">
-                                <button type="button" class="btn btn-info" href="#">Read</button>
-                                <button type="button" class="btn btn-dark" href="#">Edit</button>
-                                <button type="button" class="btn btn-danger" href="#">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
+                    if (story.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@story.Title</td>
+                            <td>@story.ShortDescription</td>
+                            @{
+                                foreach (var fandom in Model.AllFandoms)
+                                {
+                                    if (fandom.Id == story.FandomId)
+                                    {
+                                        <td>@fandom.Name</td>
+                                    }
+                                }
+                            }
+                            <td>@story.Likes</td>
+                            <td>@story.Rating</td>
+                            <td>
+                                <div class="btn-group-vertical">
+                                    <button type="button" class="btn btn-info" href="#">Read</button>
+                                    <button type="button" class="btn btn-dark" href="#">Edit</button>
+                                    <button type="button" class="btn btn-danger" href="#">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
                 }
             }
             </tbody>

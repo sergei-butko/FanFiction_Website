@@ -11,17 +11,17 @@ namespace FanFiction.Data.Mocks
             {
                 new TagForStory
                 {
-                    StoryId = 1,
+                    StoryId = 2,
                     TagId = 1
                 },
                 new TagForStory
                 {
-                    StoryId = 1,
+                    StoryId = 2,
                     TagId = 2
                 },
                 new TagForStory
                 {
-                    StoryId = 1,
+                    StoryId = 2,
                     TagId = 3
                 }
             };

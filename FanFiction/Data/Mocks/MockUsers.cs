@@ -16,7 +16,7 @@ namespace FanFiction.Data.Mocks
                 }
             };
 
-        public User GetObjectUser(int id)
+        public User GetObjectUser(string id)
         {
             throw new System.NotImplementedException();
         }

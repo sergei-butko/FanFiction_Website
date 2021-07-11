@@ -6,6 +6,6 @@ namespace FanFiction.Data.Interfaces
     public interface IAllUsers
     {
         IEnumerable<User> Users { get; }
-        User GetObjectUser(int id);
+        User GetObjectUser(string id);
     }
 }

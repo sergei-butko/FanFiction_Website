@@ -1,20 +1,20 @@
 ﻿@using FanFiction.Data
 @using Microsoft.EntityFrameworkCore
 
-<form method="post">
+@using (Html.BeginForm("NewStory", "Stories", FormMethod.Post))
+{
     <div class="form-group">
         <label>Title</label>
         <input type="text" class="form-control" name="storyTitle" placeholder="Enter story title...">
     </div>
     <div class="form-group">
         <label>Short Description</label>
-        <textarea class="form-control" name="storyShortDescription" rows="4" 
+        <textarea class="form-control" name="storyShortDescription" rows="3" 
                 placeholder="Enter short description..."></textarea>
     </div>
     <div class="form-group">
         <label>Fandom</label>
         <select class="form-control" name="fandom">
-            <option disabled>Select fandom</option>
             @{
                 foreach (var fandom in Model.AllFandoms)
                 {
@@ -45,14 +45,13 @@
         <label>Add chapter</label>
         <input type="text" class="form-control" name="chapterTitle" placeholder="Enter chapter title...">
         <p></p>
-        <textarea class="form-control" name="storyChapter" rows="3" placeholder="Enter chapter text..."></textarea>
+        <textarea class="form-control" name="chapterText" rows="4" placeholder="Enter chapter text..."></textarea>
         <p></p>
         <input type="text" class="form-control" name="image" placeholder="Enter image link...">
     </div>
     <div></div>
     <div style="text-align: end">
         <p></p>
-        <button type="button" class="btn btn-success" 
-                onclick="location.href='@Url.Action("Create", "Stories")'">Create</button>
+        <input type="submit" name="NewStory" value="Create" class="btn btn-success">
     </div>
-</form>
+}

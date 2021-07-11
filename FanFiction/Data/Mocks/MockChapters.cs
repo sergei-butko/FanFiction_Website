@@ -11,7 +11,7 @@ namespace FanFiction.Data.Mocks
             {
                 new Chapter
                 {
-                    StoryId = 1,
+                    StoryId = 2,
                     SequentialNumber = 1,
                     Title = "Chapter 1",
                     Text = "Сознание прояснялось толчками в такт стуку сердца. " +
@@ -23,7 +23,7 @@ namespace FanFiction.Data.Mocks
                 },
                 new Chapter
                 {
-                    StoryId = 1,
+                    StoryId = 2,
                     SequentialNumber = 2,
                     Title = "Chapter 2",
                     Text = "Северус в своих апартаментах быстро заживил небольшую " +
@@ -34,7 +34,7 @@ namespace FanFiction.Data.Mocks
                 },
                 new Chapter
                 {
-                    StoryId = 1,
+                    StoryId = 2,
                     SequentialNumber = 3,
                     Title = "Chapter 3",
                     Text = "В служивший тайным убежищем дом, затерянный среди практически " +
