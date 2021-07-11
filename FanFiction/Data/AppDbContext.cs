@@ -10,6 +10,7 @@ namespace FanFiction.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
+            Database.EnsureCreated();
         }
 
         public DbSet<User> User { get; set; }
