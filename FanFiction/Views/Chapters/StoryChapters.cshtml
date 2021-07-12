@@ -1,0 +1,45 @@
+﻿@model List<Chapter>
+
+@{
+    <div style="text-align: end">
+        <button class="btn btn-success"
+                onclick="location.href='@Url.Action("AddChapter", "Chapters")'">
+            Add New
+        </button>
+        <p></p>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Title</th>
+                <th>Likes</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @{
+                foreach (var chapter in Model)
+                {
+                    <tr>
+                        <td>@chapter.SequentialNumber</td>
+                        <td>@chapter.Title</td>
+                        <td>@chapter.Likes</td>
+                        <td>
+                            <div class="btn-group-vertical">
+                                <button class="btn btn-info" onclick="
+                                        location.href='@Url.Action("Read", "Chapters", new {chapter.Id})'">Read</button>
+                                <button class="btn btn-dark" onclick="
+                                        location.href='@Url.Action("Edit", "Chapters", new {chapter.Id})'">Edit</button>
+                                <button class="btn btn-danger" onclick="
+                                        location.href='@Url.Action("Delete", "Chapters", new {id = chapter.Id})'">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+}

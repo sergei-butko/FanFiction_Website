@@ -1,0 +1,20 @@
+﻿@using (Html.BeginForm("AddChapter", "Chapters", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" name="chapterTitle" placeholder="Enter chapter title...">
+    </div>
+    <div class="form-group">
+        <label>Text</label>
+        <textarea class="form-control" name="chapterText" rows="10" placeholder="Enter chapter text..."></textarea>
+    </div>
+    <div class="form-group">
+        <label>Image (optional)</label>
+        <input type="url" class="form-control" name="image" placeholder="Enter image link...">
+    </div>
+    <div></div>
+    <div style="text-align: end">
+        <p></p>
+        <input type="submit" name="AddChapter" value="Add" class="btn btn-success">
+    </div>
+}

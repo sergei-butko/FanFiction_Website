@@ -1,0 +1,30 @@
+﻿@model FanFiction.Data.Models.Chapter
+
+<h3>Edit chapter:</h3>
+@using (Html.BeginForm("Edit", "Chapters", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(c => c.Id)
+        @Html.HiddenFor(c => c.StoryId)
+        @Html.HiddenFor(c => c.SequentialNumber)
+        @Html.HiddenFor(c => c.Likes)
+        <p>
+            @Html.LabelFor(c => c.Title, "Title:")
+            <br/>
+            @Html.EditorFor(c => c.Title)
+        </p>
+        <p>
+            @Html.LabelFor(c => c.Text, "Text:")
+            <br/>
+            @Html.EditorFor(c => c.Text)
+        </p>
+        <p>
+            @Html.LabelFor(c => c.Image, "Image link:")
+            <br/>
+            @Html.EditorFor(c => c.Image)
+        </p>
+        <p>
+            <input type="submit" value="Save" class="btn btn-success"/>
+        </p>
+    </fieldset>
+}

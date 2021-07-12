@@ -1,0 +1,12 @@
+﻿@model FanFiction.Data.Models.Chapter
+@{
+    <h3>Do you really want to delete</h3>
+    <p></p>
+    <h4>@Html.DisplayFor(model => model.Title)</h4>
+    <p>@Html.DisplayFor(model => model.Text)</p>
+    <p></p>
+    @using (Html.BeginForm())
+    {
+        <input type="submit" class="btn btn-danger" value="Delete"/>
+    }
+}
