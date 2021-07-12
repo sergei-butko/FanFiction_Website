@@ -2,7 +2,7 @@
 
 @{
     <div style="text-align: end">
-        <button type="button" class="btn btn-success"
+        <button class="btn btn-success"
                 onclick="location.href='@Url.Action("NewStory", "Stories")'">
             Create New
         </button>
@@ -26,9 +26,9 @@
                 int i = 0;
                 foreach (var story in Model.AllStories)
                 {
-                    i++;
                     if (story.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
                     {
+                        i++;
                         <tr>
                             <td>@i</td>
                             <td>@story.Title</td>
@@ -46,9 +46,13 @@
                             <td>@story.Rating</td>
                             <td>
                                 <div class="btn-group-vertical">
-                                    <button type="button" class="btn btn-info" href="#">Read</button>
-                                    <button type="button" class="btn btn-dark" href="#">Edit</button>
-                                    <button type="button" class="btn btn-danger" href="#">Delete</button>
+                                    <button class="btn btn-info" onclick="
+                                        location.href='@Url.Action("Read", "Stories",
+                                                           new {story.Id})'">Read</button>
+                                    <button class="btn btn-dark" href="#">Edit</button>
+                                    <button class="btn btn-danger" onclick="
+                                        location.href='@Url.Action("Delete", "Stories", 
+                                                           new {id = story.Id})'">Delete</button>
                                 </div>
                             </td>
                         </tr>

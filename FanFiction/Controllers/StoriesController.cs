@@ -13,13 +13,14 @@ namespace FanFiction.Controllers
     public class StoriesController : Controller
     {
         private static UserManager<IdentityUser> _userManager;
-        
+
         private readonly IAllStories _allStories;
         private readonly IAllChapters _allChapters;
         private readonly IAllFandoms _allFandoms;
         private readonly AppDbContext _context;
-        
-        public StoriesController(IAllStories iAllStories, IAllChapters iAllChapters, IAllFandoms iAllFandoms, AppDbContext context)
+
+        public StoriesController(IAllStories iAllStories, IAllChapters iAllChapters, IAllFandoms iAllFandoms,
+            AppDbContext context)
         {
             _allStories = iAllStories;
             _allChapters = iAllChapters;
@@ -45,10 +46,22 @@ namespace FanFiction.Controllers
             StoriesListViewModel obj = new StoriesListViewModel {AllFandoms = _allFandoms.Fandoms};
             return View(obj);
         }
+
+        public ActionResult Read(int id)
+        {
+            Story story = _context.Story.Find(id);
+            return View(story);
+        }
         
+        public ActionResult Edit(int id)
+        {
+            Story story = _context.Story.Find(id);
+            return View(story);
+        }
+         
         [HttpPost]
         public IActionResult NewStory(string storyTitle, string storyShortDescription,
-            string fandom, string[] tags, string[] chaptersTitles, string[] chaptersText, string image)
+            string fandom, string[] tags)
         {
             _context.AddRange(new Story
             {
@@ -61,23 +74,33 @@ namespace FanFiction.Controllers
                 Rating = 0,
                 LastUpdateDate = DateTime.Now
             });
-            
-            for (int i = 1; i <= chaptersTitles.Length; i++)
-            {
-               new Chapter
-                    {
-                        StoryId = Convert.ToInt32(_context.Story
-                            .Where(s => s.Title == storyTitle).Select(s => s.Id)),
-                        SequentialNumber = i,
-                        Title = chaptersTitles[i - 1],
-                        Text = chaptersText[i - 1],
-                        Image = image,
-                        Likes = 0
-                    };
-            }
             _context.SaveChanges();
 
-            return View("MyStories");
+            return RedirectToAction("MyStories");
         }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            Story story = _context.Story.Find(id);
+            if (story == null)
+            {
+                return new NotFoundResult();
+            }
+            return View(story);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Story story = _context.Story.Find(id);
+            if (story == null)
+            {
+                return new NotFoundResult();
+            }
+            _context.Story.Remove(story);
+            _context.SaveChanges();
+            return RedirectToAction("MyStories");
+        }
+        
     }
 }

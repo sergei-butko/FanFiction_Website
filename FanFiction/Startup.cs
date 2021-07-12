@@ -62,9 +62,18 @@ namespace FanFiction
             app.UseStaticFiles();
             
             app.UseAuthentication();
-            app.UseAuthorization();
             
             app.UseMvcWithDefaultRoute();
+            app.UseRouting();
+            
+            app.UseAuthorization();
+            
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
             
             using (var scope = app.ApplicationServices.CreateScope())
             {

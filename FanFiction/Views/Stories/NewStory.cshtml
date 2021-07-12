@@ -9,7 +9,7 @@
     </div>
     <div class="form-group">
         <label>Short Description</label>
-        <textarea class="form-control" name="storyShortDescription" rows="3" 
+        <textarea class="form-control" name="storyShortDescription" rows="5" 
                 placeholder="Enter short description..."></textarea>
     </div>
     <div class="form-group">
@@ -30,9 +30,9 @@
                 var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
                 var options = optionsBuilder.UseSqlServer(
                     "Server=(localdb)\\MSSQLLocalDB;Database=FanFictionWebsite;" +
-                                  "Trusted_Connection=True;MultipleActiveResultSets=true").Options;
+                    "Trusted_Connection=True;MultipleActiveResultSets=true").Options;
                 AppDbContext context = new AppDbContext(options);
-                
+
                 var tags = context.Tag.OrderBy(t => t.Text).Select(t => t.Text);
                 foreach (var tag in tags)
                 {
@@ -40,14 +40,6 @@
                 }
             }
         </select>
-      </div>
-    <div class="form-group">
-        <label>Add chapter</label>
-        <input type="text" class="form-control" name="chapterTitle" placeholder="Enter chapter title...">
-        <p></p>
-        <textarea class="form-control" name="chapterText" rows="4" placeholder="Enter chapter text..."></textarea>
-        <p></p>
-        <input type="text" class="form-control" name="image" placeholder="Enter image link...">
     </div>
     <div></div>
     <div style="text-align: end">
