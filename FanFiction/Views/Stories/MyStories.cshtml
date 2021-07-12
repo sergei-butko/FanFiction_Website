@@ -47,12 +47,13 @@
                             <td>
                                 <div class="btn-group-vertical">
                                     <button class="btn btn-info" onclick="
-                                        location.href='@Url.Action("Read", "Stories",
-                                                           new {story.Id})'">Read</button>
-                                    <button class="btn btn-dark" href="#">Edit</button>
+                                        location.href='@Url.Action("StoryChapters", "Chapters", new {story.Id})'">Read</button>
+                                    <button class="btn btn-dark" onclick="
+                                        location.href='@Url.Action("Edit", "Stories", new {story.Id})'">Edit</button>
+                                    <button class="btn btn-dark" onclick="
+                                        location.href='@Url.Action("StoryChapters", "Chapters", new {story.Id})'">View chapters</button>
                                     <button class="btn btn-danger" onclick="
-                                        location.href='@Url.Action("Delete", "Stories", 
-                                                           new {id = story.Id})'">Delete</button>
+                                        location.href='@Url.Action("Delete", "Stories", new {id = story.Id})'">Delete</button>
                                 </div>
                             </td>
                         </tr>

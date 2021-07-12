@@ -13,7 +13,7 @@ namespace FanFiction.Data
                 context.AddRange(
                     new Fandom {Name = "Harry Potter"});
             }
-            
+
             if (!context.Story.Any())
             {
                 context.AddRange(
@@ -32,7 +32,7 @@ namespace FanFiction.Data
                         Rating = (float) 4.1
                     });
             }
-            
+
             if (!context.Chapter.Any())
             {
                 context.AddRange(
@@ -73,7 +73,7 @@ namespace FanFiction.Data
                         Likes = 18
                     });
             }
-            
+
             if (!context.Tag.Any())
             {
                 context.AddRange(
@@ -81,7 +81,7 @@ namespace FanFiction.Data
                     new Tag {Text = "Severus Snape"},
                     new Tag {Text = "Adventures"});
             }
-            
+
             if (!context.TagForStory.Any())
             {
                 context.AddRange(
@@ -101,7 +101,7 @@ namespace FanFiction.Data
                         TagId = 3
                     });
             }
-            
+
             if (!context.Comment.Any())
             {
                 context.AddRange(

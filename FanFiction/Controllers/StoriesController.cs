@@ -7,6 +7,7 @@ using FanFiction.Data.Interfaces;
 using FanFiction.Data.Models;
 using FanFiction.ViewModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace FanFiction.Controllers
 {
@@ -47,18 +48,31 @@ namespace FanFiction.Controllers
             return View(obj);
         }
 
-        public ActionResult Read(int id)
+        public ActionResult Edit(int? id)
         {
+            ViewBag.Title = "Edit Story";
+            if (id == null)
+            {
+                return new NotFoundResult();
+            }
+
             Story story = _context.Story.Find(id);
-            return View(story);
+            if (story != null)
+            {
+                return View(story);
+            }
+
+            return new NotFoundResult();
         }
-        
-        public ActionResult Edit(int id)
+
+        [HttpPost]
+        public ActionResult Edit(Story story)
         {
-            Story story = _context.Story.Find(id);
-            return View(story);
+            _context.Entry(story).State = EntityState.Modified;
+            _context.SaveChanges();
+            return RedirectToAction("MyStories");
         }
-         
+
         [HttpPost]
         public IActionResult NewStory(string storyTitle, string storyShortDescription,
             string fandom, string[] tags)
@@ -87,8 +101,10 @@ namespace FanFiction.Controllers
             {
                 return new NotFoundResult();
             }
+
             return View(story);
         }
+
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -97,10 +113,10 @@ namespace FanFiction.Controllers
             {
                 return new NotFoundResult();
             }
+
             _context.Story.Remove(story);
             _context.SaveChanges();
             return RedirectToAction("MyStories");
         }
-        
     }
 }

@@ -1,0 +1,26 @@
+﻿@model FanFiction.Data.Models.Story
+
+<h3>Edit story information:</h3>
+@using (Html.BeginForm("Edit", "Stories", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(s => s.Id)
+         @Html.HiddenFor(s => s.UserId)
+        @Html.HiddenFor(s => s.FandomId)
+        @Html.HiddenFor(s => s.Likes)
+        @Html.HiddenFor(s => s.Rating)
+        @Html.HiddenFor(s => s.LastUpdateDate)
+        <p>
+            @Html.LabelFor(s => s.Title, "Title:")
+            <br />
+            @Html.EditorFor(s => s.Title)
+        </p>
+        <p>
+            @Html.LabelFor(s => s.ShortDescription, "Short description:")
+            <br />
+            @Html.EditorFor(s => s.ShortDescription)
+ 
+        </p>
+        <p><input type="submit" value="Save" class="btn btn-success"/></p>
+    </fieldset>
+}

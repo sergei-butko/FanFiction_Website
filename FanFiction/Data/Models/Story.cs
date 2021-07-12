@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FanFiction.Data.Models
 {
@@ -7,7 +8,7 @@ namespace FanFiction.Data.Models
         public int Id { get; set; }
         public string? UserId { get; set; }
         public string Title { get; set; }
-        public string ShortDescription { get; set; }
+        [DataType(DataType.MultilineText)] public string ShortDescription { get; set; }
         public int? FandomId { get; set; }
         public Fandom Fandom { get; set; }
         public int Likes { get; set; }
